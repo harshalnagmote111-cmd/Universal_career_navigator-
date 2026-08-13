@@ -15,6 +15,7 @@ import { Route as CollegesRouteImport } from './routes/colleges'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as MatchesRouteImport } from './routes/matches'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as RoadmapRouteImport } from './routes/roadmap'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,11 @@ const ProfileRoute = ProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RoadmapRoute = RoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/compare': typeof CompareRoute
   '/matches': typeof MatchesRoute
   '/profile': typeof ProfileRoute
+  '/roadmap': typeof RoadmapRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/compare': typeof CompareRoute
   '/matches': typeof MatchesRoute
   '/profile': typeof ProfileRoute
+  '/roadmap': typeof RoadmapRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,13 +79,27 @@ export interface FileRoutesById {
   '/compare': typeof CompareRoute
   '/matches': typeof MatchesRoute
   '/profile': typeof ProfileRoute
+  '/roadmap': typeof RoadmapRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/assessment' | '/colleges' | '/compare' | '/matches' | '/profile'
+    | '/'
+    | '/assessment'
+    | '/colleges'
+    | '/compare'
+    | '/matches'
+    | '/profile'
+    | '/roadmap'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/assessment' | '/colleges' | '/compare' | '/matches' | '/profile'
+  to:
+    | '/'
+    | '/assessment'
+    | '/colleges'
+    | '/compare'
+    | '/matches'
+    | '/profile'
+    | '/roadmap'
   id:
     | '__root__'
     | '/'
@@ -86,6 +108,7 @@ export interface FileRouteTypes {
     | '/compare'
     | '/matches'
     | '/profile'
+    | '/roadmap'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -95,6 +118,7 @@ export interface RootRouteChildren {
   CompareRoute: typeof CompareRoute
   MatchesRoute: typeof MatchesRoute
   ProfileRoute: typeof ProfileRoute
+  RoadmapRoute: typeof RoadmapRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -141,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/roadmap': {
+      id: '/roadmap'
+      path: '/roadmap'
+      fullPath: '/roadmap'
+      preLoaderRoute: typeof RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -151,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompareRoute: CompareRoute,
   MatchesRoute: MatchesRoute,
   ProfileRoute: ProfileRoute,
+  RoadmapRoute: RoadmapRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

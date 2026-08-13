@@ -20,7 +20,7 @@ export const OPPORTUNITIES: Opportunity[] = [
     id: "nsp",
     title: "National Scholarship Portal (all central & state schemes)",
     kind: "Scholarship",
-    emoji: "�scholar",
+    emoji: "🎓",
     provider: "Government of India",
     status: "verified-source",
     clusters: ["all"],

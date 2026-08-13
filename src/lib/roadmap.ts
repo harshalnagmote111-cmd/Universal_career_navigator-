@@ -12,7 +12,7 @@ export type RoadmapStep = {
 export function buildRoadmap(
   career: Career,
   profile: DerivedProfile,
-  selection: { course?: string; city?: string; exam?: string },
+  selection: { course?: string | undefined; city?: string | undefined; exam?: string | undefined },
 ): RoadmapStep[] {
   const course = selection.course ?? career.courses[0] ?? "your chosen course";
   const city = selection.city?.trim();

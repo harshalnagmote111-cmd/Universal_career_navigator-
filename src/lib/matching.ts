@@ -103,13 +103,13 @@ export type CollegeRecommendation = {
 };
 
 export type CollegeQuery = {
-  careerId?: string;
-  course?: string;
-  city?: string;
-  exam?: string;
-  score?: string;
-  scoreType?: "score" | "percentile";
-  budget?: string;
+  careerId?: string | undefined;
+  course?: string | undefined;
+  city?: string | undefined;
+  exam?: string | undefined;
+  score?: string | undefined;
+  scoreType?: "score" | "percentile" | undefined;
+  budget?: string | undefined;
 };
 
 function scoreBand(query: CollegeQuery): number | null {

@@ -21,7 +21,7 @@ export const Route = createFileRoute("/roadmap")({
       { property: "og:description", content: "Discover → Explore → Plan → Apply → Grow, personalised to your path." },
     ],
   }),
-  component: Roadmap;
+  component: Roadmap,
 });
 
 function Roadmap() {

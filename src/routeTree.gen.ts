@@ -14,6 +14,7 @@ import { Route as AssessmentRouteImport } from './routes/assessment'
 import { Route as CollegesRouteImport } from './routes/colleges'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as MatchesRouteImport } from './routes/matches'
+import { Route as OpportunitiesRouteImport } from './routes/opportunities'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
 
@@ -42,6 +43,11 @@ const MatchesRoute = MatchesRouteImport.update({
   path: '/matches',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OpportunitiesRoute = OpportunitiesRouteImport.update({
+  id: '/opportunities',
+  path: '/opportunities',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/colleges': typeof CollegesRoute
   '/compare': typeof CompareRoute
   '/matches': typeof MatchesRoute
+  '/opportunities': typeof OpportunitiesRoute
   '/profile': typeof ProfileRoute
   '/roadmap': typeof RoadmapRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/colleges': typeof CollegesRoute
   '/compare': typeof CompareRoute
   '/matches': typeof MatchesRoute
+  '/opportunities': typeof OpportunitiesRoute
   '/profile': typeof ProfileRoute
   '/roadmap': typeof RoadmapRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/colleges': typeof CollegesRoute
   '/compare': typeof CompareRoute
   '/matches': typeof MatchesRoute
+  '/opportunities': typeof OpportunitiesRoute
   '/profile': typeof ProfileRoute
   '/roadmap': typeof RoadmapRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/colleges'
     | '/compare'
     | '/matches'
+    | '/opportunities'
     | '/profile'
     | '/roadmap'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/colleges'
     | '/compare'
     | '/matches'
+    | '/opportunities'
     | '/profile'
     | '/roadmap'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/colleges'
     | '/compare'
     | '/matches'
+    | '/opportunities'
     | '/profile'
     | '/roadmap'
   fileRoutesById: FileRoutesById
@@ -117,6 +129,7 @@ export interface RootRouteChildren {
   CollegesRoute: typeof CollegesRoute
   CompareRoute: typeof CompareRoute
   MatchesRoute: typeof MatchesRoute
+  OpportunitiesRoute: typeof OpportunitiesRoute
   ProfileRoute: typeof ProfileRoute
   RoadmapRoute: typeof RoadmapRoute
 }
@@ -158,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MatchesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/opportunities': {
+      id: '/opportunities'
+      path: '/opportunities'
+      fullPath: '/opportunities'
+      preLoaderRoute: typeof OpportunitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/profile': {
       id: '/profile'
       path: '/profile'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   CollegesRoute: CollegesRoute,
   CompareRoute: CompareRoute,
   MatchesRoute: MatchesRoute,
+  OpportunitiesRoute: OpportunitiesRoute,
   ProfileRoute: ProfileRoute,
   RoadmapRoute: RoadmapRoute,
 }

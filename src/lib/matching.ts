@@ -136,7 +136,12 @@ export function recommendColleges(query: CollegeQuery): CollegeRecommendation[] 
     return { college, cityMatch };
   });
 
-  const relevant = withCityMatch.filter((c) => c.cityMatch).length > 0 ? withCityMatch.filter((c) => c.cityMatch) : withCityMatch;
+  const inCity = withCityMatch.filter((c) => c.cityMatch);
+  const outsideCity = withCityMatch.filter((c) => !c.cityMatch);
+  // Always keep a few options beyond the preferred city so students see a full
+  // spread of Strong Fit / Target / Reach / Backup rather than a thin list.
+  const relevant = inCity.length >= 8 ? inCity : [...inCity, ...outsideCity.slice(0, 8 - inCity.length)];
+
 
   return relevant
     .map(({ college, cityMatch }) => {

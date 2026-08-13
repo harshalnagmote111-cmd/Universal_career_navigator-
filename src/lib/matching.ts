@@ -81,7 +81,7 @@ export function rankCareers(profile: DerivedProfile): CareerMatch[] {
 
     const normalised = max > 0 ? raw / (max * 2) : 0;
     const breadthBonus = hits.length / (Object.keys(career.tags).length || 1);
-    const score = Math.round(Math.min(0.97, normalised * 0.75 + breadthBonus * 0.22 + total / 400) * 100);
+    const score = Math.round(Math.min(0.96, normalised * 0.78 + breadthBonus * 0.18 + total / 900) * 100);
 
     const reasons = hits
       .sort((a, b) => b.contribution - a.contribution)
